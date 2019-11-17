@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Task Tracker</title>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/modalStyle.css">
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+ <div class="container" id="container">
+ 	<div class="menu" id="menu" style="width: 0;">
+ 		<svg class="logo" width =150 height='60'>
+ 			<linearGradient id="MyGradient" x1='0%' y1='0%' x2='100%' y2='100%'>
+            <stop offset="0%"  stop-color="rgba(82,139,238,1)"/>
+            <stop offset="32%" stop-color="rgba(61,107,177,1)"/>
+            <stop offset="64%" stop-color="rgba(47,83,130,1)"/>
+            <stop offset="100%" stop-color="rgba(82,139,237,1)"/>
+        </linearGradient>
+ 			<circle cx=20 cy=20 r=15 stroke='url(#MyGradient)' stroke-width='10' fill='none'/>
+ 			<text x=60 y=30 fill='#fff' style='font-size: 30px; font-weight: bold;'>ToDo</text>
+ 		</svg>
+ 		<div class="menu-elems">
+	 		<a href='#' class="menu-elem home">Home</a>
+	 		<a href='#' class="menu-elem settings">Settings</a>
+ 		</div>
+ 	</div>
+ 	<div class="container-main" id="container-main" style="width: 100%; position: relative;">
+	 	<div class="header clearfix" id="header">
+			<div class="menu-icon" id="menu-icon">
+				<div id="menu-active"></div>
+			</div>
+	 		<div class="header-right">
+		 		<div class="filter" id="filter">
+		 			<div class="filterSortMenu" id="filterMenu">
+		 				<div><input type='radio' id="priorityAll" checked name="priority"><label for='priorityAll'>All</label></div>
+		 				<div><input type='radio' id="priorityLow" name="priority"><label for='priorityLow'>Low Priority</label></div>
+		 				<div><input type='radio' id="priorityHigh" name="priority"><label for='priorityHigh'>High Priority</label></div>
+		 			</div>
+		 		</div>
+		 		<div class="sort" id="sort">
+		 			<div class="filterSortMenu" id="sortMenu">
+		 				<div><input type='radio' id="newFirst"  name="sort"><label for='newFirst'>New First</label></div>
+		 				<div><input type='radio' id="oldFirst" name="sort"><label for='oldFirst'>Old First</label></div>
+		 			</div>
+		 		</div>
+		 		<button class="add-task" id="addTask">Add ToDo</button>
+		 		<div id="profile">
+		 			<div id="profile-active" class="profile-not-active"></div>
+		 			<ul id="profileMenu">
+		 				<li>Profile</li>
+		 				<li>Settings</li>
+		 				<li>Log out</li>
+		 			</ul>
+		 		</div>
+			</div>
+			<div class="modal-task" id="modalTask">
+				<div class="modal-content">
+					<span class="close">Close</span>
+					<form  id="modal-form">
+						<div class="form-left-decoration"></div>
+  						<div class="form-right-decoration"></div>
+  						<div class="circle"></div>
+  						<div class="form-inner">
+							<h2 id="hModal">Add Task</h2>
+							<input type="text" id="nameTask" class="field" placeholder="Name Task">
+							<textarea id="descriptionTask" class="field" rows="4" placeholder="Description"></textarea>
+							<label style="margin-bottom: 10px; font-size: 20px; ">Priority:</label>
+							<div class="form-radio">
+								<input type="radio" name="checkPriority" value="1" id="highPriority"><label for="highPriority">High priority</label>
+								<input type="radio" name="checkPriority"  value="2" checked id="mediumPriority"><label for="mediumPriority">Medium priority</label>
+								<input type="radio" name="checkPriority" value="3" id="lowPriority"><label for="lowPriority">Low priority</label>
+							</div>
+						</div>
+					</form>
+					<button id="btn-add-task" class="field btn-field" >Add</button>
+				</div>
+			</div>
+	 	</div>
+
+	 	<div class="main">
+	 		<div class="toDo cont" id="toDo">
+		 		<h2>To Do <span id="toDoCount" class="count-task"></span></h2>
+				<div class="task" draggable="true" id="task1">
+					<div class="task-info">
+						<span class="priority high-priority">High Priority</span>
+						<div class="date">8 Feb 2018 18.30</div>
+		 			</div>
+					<svg class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#5584ff'/>
+						<text x=13 y=28 fill='#fff' font-size=25>L</text>
+					</svg>					
+					<div class="description-task">					
+						<h3>Lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+				<div class="task" draggable="true" id="task2">
+					<div class="task-info">
+						<span class="priority"></span>
+						<div class="date">5 Feb 2018 18.30</div>
+			 		</div>						
+					<svg class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#5584ff'/>
+						<text x=13 y=28 fill='#fff' font-size=25>L</text>
+					</svg>
+					<div class="description-task">					
+						<h3>Lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+				<div class="task" draggable="true" id="task3">
+					<div class="task-info">
+						<span class="priority low-priority">Low Priority</span>
+						<div class="date">2 Feb 2018 18.30</div>
+			 		</div>						
+					<svg  class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#5584ff'/>
+						<text x=13 y=28 fill='#fff' font-size=25>L</text>
+					</svg>					
+					<div class="description-task">					
+						<h3>Lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+				<div class="task" draggable="true" id="task4">
+					<div class="task-info">
+						<span class="priority"></span>
+						<div class="date">25 Feb 2018 18.30</div>
+			 		</div>						
+					<svg class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#5584ff'/>
+						<text x=13 y=28 fill='#fff' font-size=25>L</text>
+					</svg>					
+					<div class="description-task">					
+						<h3>Lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+			</div>
+
+			<div class="completed cont" id="completed">
+
+		 		<h2>Completed <span id="completedCount" class="count-task"></span></h2>
+				<div class="task" draggable="true" id="task5">
+					<div class="task-info">
+						<span class="priority"></span>
+						<div class="date">25 Feb 2018 18.30</div>
+					
+			 		</div>						
+					<svg class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#5584ff'/>
+						<text x=13 y=28 fill='#fff' font-size=25>L</text>
+					</svg>					
+					<div class="description-task">					
+						<h3>Lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+				<div class="task" draggable="true" id="task6">
+					<div class="task-info">
+						<span class="priority high-priority">High Priority</span>
+						<div class="date">25 Mar 2018 18.30</div>
+						
+						
+			 		</div>						
+					<svg class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#6ccae8'/>
+						<text x=12 y=28 fill='#fff' font-size=25>N</text>
+					</svg>					
+					<div class="description-task">					
+						<h3>New lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+				<div class="task" draggable="true" id="task7">
+					<div class="task-info">
+						<span class="priority"></span>
+						<div class="date">11 May 2018 18.30</div>
+						
+			 		</div>						
+					<svg class='task-icon' width='40' height='40'>
+						<circle cx=20 cy=20 r=20 fill='#e355ff'/>
+						<text x=13 y=28 fill='#fff' font-size=25>L</text>
+					</svg>
+					<div class="description-task">					
+						<h3>Lorem ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer nec odio. Preasent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Preasent mauris. Furse nec tellus sed augue semper porta. Mauris massa. Vestibulum</p>
+					</div>
+					<div class='icon-task-menu'></div>
+				</div>
+			</div>
+	 	</div>
+ 	</div>
+ </div>
+<script type="text/javascript" src="polifills.js"></script>
+<script type="text/javascript" src="initD.js"></script>
+</body>
+</html>
